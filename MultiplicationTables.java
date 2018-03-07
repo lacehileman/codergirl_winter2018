@@ -7,24 +7,29 @@ public class MultiplicationTables
     static public void main(String[] args)
     {
         Scanner keyboard = new Scanner(System.in);
-        int userPick;
+        int size;
 
 
 
         System.out.println("Welcome to Multiplication Tables"
             + "\nHow large would you like to see them?");
-        userPick = keyboard.nextInt();
+        size = keyboard.nextInt();
 
-
-        for (int count = 0; count <= userPick; count++)
+        if ((size >=0) && (size <= 20))
         {
-            for (int i = 1; i <= userPick; i++)
+
+            for (int count = 0; count <= size; count++)
             {
-                System.out.println(count + " * " + i + " = " + count * i);
+                for (int i = 1; i <= size; i++) {
+                    System.out.println(count + " * " + i + " = " + count * i);
+                }
             }
+
         }
-
-
+        else
+        {
+            System.out.println("Please choose a number between 0 and 20");
+        }
 
     }
 
