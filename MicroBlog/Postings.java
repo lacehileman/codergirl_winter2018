@@ -12,11 +12,6 @@ public class Postings
         this.comment = comment;
     }
 
-//    public int getPostNum()
-//    {
-//        return postNum++;
-//    }
-
     public String getPost()
     {
         return user + ":\n" + "    \"" + comment + "\"";
