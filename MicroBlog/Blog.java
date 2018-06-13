@@ -98,11 +98,14 @@ public class Blog
                     System.out.println();
                 }
                 //create a post
-                else if (menuChoice == 3) 
+                else if (menuChoice == 3) //Fixed: Prints last post and takes whole line as comment, not first word
                 {
+                    System.out.println("Previous post:\n" + currentPost);
+
                     System.out.println("You are currently posting as \"" + currentUser + "\".\n" +
-                            "What would you like to say?");
-                    comment = keyboard.next();
+                        "What would you like to say?");
+                    keyboard.nextLine();
+                    comment = keyboard.nextLine();
 
                     postArray.add(new Postings(currentUser, comment));
                 }
