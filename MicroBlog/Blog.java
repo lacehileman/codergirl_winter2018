@@ -34,13 +34,15 @@ public class Blog
         userArray.add(0, new User("","","",""));
 
         String currentUser = "";
+        String currentPost = "First Post";
         int pkUser = 0;
         User pkUserString = userArray.get(pkUser);
 
 
         do {
+                //REWORK: Make user create user upon first use before they can do anything else
                 //This searches userArray to find the last element
-                //FIX: Keeps pkUser as user when making new user, does not make new user current user :(
+                //FIX: Keeps pkUser as user when making new user, does not make new user current user
                 if(pkUser != 0)
                 {
                     currentUser = String.valueOf(userArray.get(pkUser).displayUser());
@@ -50,6 +52,11 @@ public class Blog
                     currentUser = String.valueOf((userArray.get(userArray.size()-1).displayUser()));
                 }
 
+                if (postArray != null && !postArray.isEmpty())
+                {
+                    currentPost = String.valueOf((postArray.get(postArray.size()-1).getPost()));
+                } 
+            
                 mainMenu(currentUser);
                 menuChoice = keyboard.nextInt();
 
@@ -93,7 +100,8 @@ public class Blog
                             System.out.println(i + " " + userArray.get(i).displayUser());
                         }
                     System.out.println();
-                    System.out.println("\nPlease choose (name/number?) of user you would like to log in as:");
+                    
+                    System.out.println("\nPlease choose number of user you would like to log in as:");
                     pkUser = keyboard.nextInt();
                     System.out.println();
                 }
