@@ -56,9 +56,7 @@ public class temps
         System.out.println("The data provided is:\n");
 
         //print day names
-        //Solved (but do not fully understand how - need to study solution):
-        //How the heck do I get this to print pretty with the rest of the array?!
-        //my loops are askew somewhere, just no clue where :'(
+
         for(int k = 0; k < weekDays.length; k++)
         {
             System.out.print(weekDays[k] + "   ");
@@ -79,7 +77,6 @@ public class temps
 
         System.out.println("Based on that data, the following are the average temperatures for the week:\n");
 
-        //daily avg temps. STUDY SOLUTION - WHY does this work?!
             for (int i = 1; i <= temps.length + 3; i++)
             {
                 System.out.print("The average temperature for " + weekDays[i] + " was: ");
