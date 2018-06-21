@@ -38,19 +38,21 @@ public class Blog
         int pkUser = 0;
         User pkUserString = userArray.get(pkUser);
 
+               if(pkUser != 0)
+        {
+            currentUser = String.valueOf(userArray.get(pkUser).displayUser());
+        }
+
+            if (userArray != null && !userArray.isEmpty())
+            {
+                currentUser = String.valueOf((userArray.get(userArray.size()-1).displayUser()));
+
+            }
 
         do {
                 //REWORK: Make user create user upon first use before they can do anything else
                 //This searches userArray to find the last element
                 //FIX: Keeps pkUser as user when making new user, does not make new user current user
-                if(pkUser != 0)
-                {
-                    currentUser = String.valueOf(userArray.get(pkUser).displayUser());
-                }
-                else if (userArray != null && !userArray.isEmpty()) 
-                {
-                    currentUser = String.valueOf((userArray.get(userArray.size()-1).displayUser()));
-                }
 
                 if (postArray != null && !postArray.isEmpty())
                 {
@@ -91,7 +93,6 @@ public class Blog
                 //become existing user
                 else if (menuChoice == 2) 
                 {
-                    String bcUs;
                     System.out.println("\nThese are the current users:\n");
                     System.out.println("List of Users...");
 
@@ -104,49 +105,73 @@ public class Blog
                     System.out.println("\nPlease choose number of user you would like to log in as:");
                     pkUser = keyboard.nextInt();
                     System.out.println();
+                    
+                    currentUser=userArray.get(pkUser).getUserName();
+                    System.out.println("you are now user: \"" + userArray.get(pkUser).displayUser() + "\"");
+                    System.out.println();
+                    
                 }
                 //create a post
                 else if (menuChoice == 3) //Fixed: Prints last post and takes whole line as comment, not first word
                 {
-                    System.out.println("Previous post:\n" + currentPost);
-
-                    System.out.println("You are currently posting as \"" + currentUser + "\".\n" +
-                        "What would you like to say?");
-                    keyboard.nextLine();
-                    comment = keyboard.nextLine();
-
-                    postArray.add(new Postings(currentUser, comment));
-                }
-                //print all posts
-                else if (menuChoice == 4) 
-                {
+                    System.out.println();
+                    int userPost = -1;
                     for (int i = 0; i < postArray.size(); i++)
                     {
-                    System.out.println(postArray.get(i).getPost());
+                        if (postArray.get(i).user.equals(currentUser))
+                        {
+                            userPost = i;
+                        }
                     }
-                    System.out.println();
+                    if (userPost > -1){
+                        System.out.println("This was your last post:");
+                        System.out.println(postArray.get(userPost).getPost());
+                    }else
+                        {
+                        System.out.println("You haven't posted anything yet.");
                 }
-                //print all users
-                else if (menuChoice == 5)
+               //makePost();
+                System.out.println("Most recent post in thread:\n" + currentPost);
+                System.out.println();
+
+                System.out.println("You are currently posting as \"" + currentUser + "\".\n" +
+                        "What would you like to say?");
+                keyboard.nextLine();
+                comment = keyboard.nextLine();
+                System.out.println();
+
+                postArray.add(new Postings(currentUser, comment));
+                }
+                //print all posts
+            else if (menuChoice == 4) 
+            {
+                for (int i = 0; i < postArray.size(); i++)
                 {
-
-                    for (int i = 1; i < userArray.size(); i++)
-                    {
-                        System.out.println(userArray.get(i).displayUser());
-                    }
-
+                System.out.println(postArray.get(i).getPost());
                 }
-                else if (menuChoice >= 6 || menuChoice <= 0)//seems redundant?
+                System.out.println();
+            }
+            //print all users
+            else if (menuChoice == 5)
+            {
+
+                for (int i = 1; i < userArray.size(); i++)
                 {
-                    while (menuChoice >= 6 || menuChoice <= 0)
-                    {
-                        System.out.println("I don't understand your choice, please choose 1 through 5");
-                        menuChoice = keyboard.nextInt();
-                    }
+                    System.out.println(userArray.get(i).displayUser());
                 }
 
-        }while (true);
+            }
+            else if (menuChoice >= 6 || menuChoice <= 0)//seems redundant?
+            {
+                while (menuChoice >= 6 || menuChoice <= 0)
+                {
+                    System.out.println("I don't understand your choice, please choose 1 through 5");
+                    menuChoice = keyboard.nextInt();
+                }
+            }
 
-    }
+    }while (true);
+
+}
 
 }
