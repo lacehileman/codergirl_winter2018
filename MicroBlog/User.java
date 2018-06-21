@@ -19,6 +19,11 @@ public class User {
         this.email = email;
     }
 
+    public String getUserName()
+    {
+        return userName;
+    }
+    
     public String displayUser()
     {
         return avatar + " " + userName;
