@@ -38,16 +38,16 @@ public class Blog
         int pkUser = 0;
         User pkUserString = userArray.get(pkUser);
 
-               if(pkUser != 0)
+        if(pkUser != 0)
         {
             currentUser = String.valueOf(userArray.get(pkUser).displayUser());
         }
 
-            if (userArray != null && !userArray.isEmpty())
-            {
-                currentUser = String.valueOf((userArray.get(userArray.size()-1).displayUser()));
+        if (userArray != null && !userArray.isEmpty())
+        {
+            currentUser = String.valueOf((userArray.get(userArray.size()-1).displayUser()));
 
-            }
+        }
 
         do {
                 //REWORK: Make user create user upon first use before they can do anything else
@@ -123,24 +123,26 @@ public class Blog
                             userPost = i;
                         }
                     }
-                    if (userPost > -1){
+                    if (userPost > -1)
+                    {
                         System.out.println("This was your last post:");
                         System.out.println(postArray.get(userPost).getPost());
-                    }else
-                        {
+                    }
+                    else
+                    {
                         System.out.println("You haven't posted anything yet.");
-                }
-               //makePost();
-                System.out.println("Most recent post in thread:\n" + currentPost);
-                System.out.println();
+                    }
+                   //makePost();
+                    System.out.println("Most recent post in thread:\n" + currentPost);
+                    System.out.println();
 
-                System.out.println("You are currently posting as \"" + currentUser + "\".\n" +
-                        "What would you like to say?");
-                keyboard.nextLine();
-                comment = keyboard.nextLine();
-                System.out.println();
+                    System.out.println("You are currently posting as \"" + currentUser + "\".\n" +
+                            "What would you like to say?");
+                    keyboard.nextLine();
+                    comment = keyboard.nextLine();
+                    System.out.println();
 
-                postArray.add(new Postings(currentUser, comment));
+                    postArray.add(new Postings(currentUser, comment));
                 }
                 //print all posts
             else if (menuChoice == 4) 
